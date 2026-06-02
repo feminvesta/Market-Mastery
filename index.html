@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Mastery – Technische Analyse lernen | feminvesta</title>
+<meta name="description" content="Market Mastery: Der feminvesta-Kurs für technische Analyse. Charts lesen mit System statt Bauchgefühl – ruhig, fundiert und ohne Hype.">
+<style>
+  :root{
+    --coral:#f29184;
+    --coral-deep:#d96b5c;
+    --navy:#174462;
+    --navy-soft:#2b5a78;
+    --blush:#fef1ef;
+    --cream:#fdf7f4;
+    --sage:#accec3;
+    --grey:#b7b1ac;
+    --ink:#13303f;
+    --maxw:1180px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Optima','Segoe UI',-apple-system,sans-serif;
+    background:var(--blush);
+    color:var(--navy);
+    line-height:1.65;
+    font-size:18px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-0.01em;}
+
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .eyebrow{font-family:'Optima','Segoe UI',sans-serif;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--coral-deep);font-weight:700;}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-block;background:var(--coral);color:#fff;text-decoration:none;
+    padding:18px 40px;border-radius:2px;font-weight:700;font-size:17px;letter-spacing:0.02em;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    box-shadow:0 10px 30px -10px rgba(217,107,92,.6);
+  }
+  .btn:hover{background:var(--coral-deep);transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(217,107,92,.7);}
+  .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy);box-shadow:none;}
+  .btn-ghost:hover{background:var(--navy);color:#fff;transform:translateY(-3px);}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:100;background:rgba(254,241,239,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(23,68,98,.08);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{font-family:Georgia,serif;font-size:24px;color:var(--navy);letter-spacing:-0.02em;}
+  .logo span{color:var(--coral);}
+  .nav-cta{font-size:15px;padding:12px 26px;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:90px 0 110px;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;}
+  .hero-bg .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;}
+  .blob1{width:520px;height:520px;background:var(--sage);top:-160px;right:-120px;}
+  .blob2{width:420px;height:420px;background:var(--coral);bottom:-180px;left:-100px;opacity:.35;}
+  .hero .wrap{position:relative;z-index:1;}
+  .hero h1{font-size:clamp(42px,6.5vw,84px);line-height:1.02;margin:22px 0 26px;max-width:14ch;}
+  .hero h1 em{font-style:italic;color:var(--coral-deep);}
+  .hero-sub{font-size:clamp(19px,2.2vw,23px);max-width:46ch;color:var(--navy-soft);margin-bottom:38px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  .trust{margin-top:34px;font-size:15px;color:var(--navy-soft);display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .trust .dot{width:5px;height:5px;background:var(--coral);border-radius:50%;display:inline-block;}
+
+  /* fade-up animation */
+  .fade{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;}
+  .fade.in{opacity:1;transform:none;}
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+  /* ---------- generic section ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:62ch;margin-bottom:54px;}
+  .section-head h2{font-size:clamp(30px,4vw,46px);line-height:1.1;margin:14px 0 16px;}
+  .section-head p{color:var(--navy-soft);font-size:19px;}
+
+  /* ---------- pain ---------- */
+  .pain{background:var(--navy);color:var(--cream);}
+  .pain .eyebrow{color:var(--coral);}
+  .pain h2{color:var(--cream);}
+  .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;margin-top:8px;}
+  .pain-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:30px;border-radius:4px;}
+  .pain-card .q{font-family:Georgia,serif;font-size:22px;color:var(--coral);margin-bottom:10px;}
+  .pain-card p{color:#d9e2e8;font-size:16px;}
+
+  /* ---------- promise ---------- */
+  .promise{background:var(--cream);text-align:center;}
+  .promise h2{font-size:clamp(30px,4.5vw,52px);max-width:20ch;margin:18px auto 22px;line-height:1.1;}
+  .promise p{max-width:54ch;margin:0 auto;color:var(--navy-soft);font-size:20px;}
+
+  /* ---------- curriculum ---------- */
+  .modules{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px;}
+  .module{background:#fff;border:1px solid rgba(23,68,98,.1);border-radius:6px;padding:32px 30px;position:relative;transition:transform .3s ease,box-shadow .3s ease;}
+  .module:hover{transform:translateY(-6px);box-shadow:0 24px 50px -24px rgba(23,68,98,.35);}
+  .module .num{font-family:Georgia,serif;font-size:15px;color:var(--coral);letter-spacing:.15em;}
+  .module h3{font-size:23px;margin:8px 0 12px;}
+  .module p{font-size:16px;color:var(--navy-soft);}
+
+  /* ---------- forwhom ---------- */
+  .forwhom{background:var(--sage);}
+  .fw-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .fw-card{background:var(--cream);border-radius:6px;padding:38px 34px;}
+  .fw-card h3{font-size:24px;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+  .fw-card ul{list-style:none;}
+  .fw-card li{padding:9px 0 9px 30px;position:relative;font-size:16px;border-bottom:1px solid rgba(23,68,98,.08);}
+  .fw-card li:last-child{border-bottom:none;}
+  .fw-card li::before{position:absolute;left:0;top:9px;font-weight:700;}
+  .fw-yes li::before{content:"✓";color:#2e8b6f;}
+  .fw-no li::before{content:"✕";color:var(--coral-deep);}
+
+  /* ---------- about ---------- */
+  .about{background:var(--blush);}
+  .about-inner{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:center;}
+  .about-photo{border-radius:8px;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--sage);}
+  .about-photo img{width:100%;height:100%;object-fit:cover;object-position:30% center;display:block;}
+  .cfte{position:absolute;bottom:18px;right:18px;width:92px;height:92px;border-radius:50%;box-shadow:0 8px 24px -8px rgba(0,0,0,.5);background:#fff;}
+  .about-text h2{font-size:clamp(28px,3.5vw,42px);margin:14px 0 22px;line-height:1.12;}
+  .about-text p{color:var(--navy-soft);margin-bottom:16px;font-size:17px;}
+  .creds{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
+  .cred{background:#fff;border:1px solid rgba(23,68,98,.12);padding:10px 18px;border-radius:30px;font-size:14px;font-weight:700;color:var(--navy);}
+
+  /* ---------- included ---------- */
+  .included{background:var(--navy);color:var(--cream);}
+  .included .eyebrow{color:var(--coral);}
+  .included h2{color:var(--cream);}
+  .inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:10px;}
+  .inc-item{padding:26px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);}
+  .inc-item .ic{font-family:Georgia,serif;font-size:30px;color:var(--coral);}
+  .inc-item h3{color:var(--cream);font-size:20px;margin:10px 0 8px;}
+  .inc-item p{color:#cdd8df;font-size:15px;}
+
+  /* ---------- testimonials ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+  .testi{background:#fff;border-radius:6px;padding:32px;border:1px solid rgba(23,68,98,.1);position:relative;}
+  .testi .mark{font-family:Georgia,serif;font-size:64px;color:var(--coral);line-height:.6;opacity:.4;}
+  .testi .stars{color:var(--coral);letter-spacing:4px;font-size:16px;margin-bottom:14px;}
+  .testi p{font-size:16px;margin:6px 0 20px;color:var(--ink);line-height:1.6;}
+  .testi .who{font-weight:700;font-size:15px;}
+  .testi .who small{display:block;color:var(--navy-soft);font-weight:400;}
+
+  /* ---------- pricing ---------- */
+  .pricing{background:linear-gradient(160deg,var(--blush),var(--cream));text-align:center;}
+  .price-card{max-width:560px;margin:0 auto;background:#fff;border-radius:10px;padding:54px 44px;box-shadow:0 30px 70px -30px rgba(23,68,98,.4);border:1px solid rgba(23,68,98,.08);}
+  .price-card .badge{display:inline-block;background:var(--sage);color:var(--navy);padding:7px 18px;border-radius:30px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+  .price-card .amount{font-family:Georgia,serif;font-size:64px;color:var(--navy);margin:18px 0 4px;}
+  .price-card .amount small{font-size:22px;color:var(--navy-soft);}
+  .price-card .sub{color:var(--navy-soft);margin-bottom:28px;}
+  .price-card ul{list-style:none;text-align:left;max-width:380px;margin:0 auto 32px;}
+  .price-card li{padding:9px 0 9px 28px;position:relative;font-size:16px;}
+  .price-card li::before{content:"✓";position:absolute;left:0;color:var(--coral-deep);font-weight:700;}
+  .guarantee{margin-top:22px;font-size:14px;color:var(--navy-soft);}
+
+  /* ---------- faq ---------- */
+  .faq-list{max-width:760px;margin:0 auto;}
+  details{background:#fff;border:1px solid rgba(23,68,98,.1);border-radius:6px;margin-bottom:14px;padding:4px 26px;transition:box-shadow .3s ease;}
+  details[open]{box-shadow:0 14px 34px -18px rgba(23,68,98,.3);}
+  summary{cursor:pointer;list-style:none;padding:22px 0;font-family:Georgia,serif;font-size:20px;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:18px;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";font-size:28px;color:var(--coral);transition:transform .3s ease;}
+  details[open] summary::after{transform:rotate(45deg);}
+  details p{padding:0 0 24px;color:var(--navy-soft);font-size:16px;}
+
+  /* ---------- final cta ---------- */
+  .final{background:var(--navy);color:var(--cream);text-align:center;position:relative;overflow:hidden;}
+  .final .blob{position:absolute;width:500px;height:500px;border-radius:50%;background:var(--coral);filter:blur(120px);opacity:.3;top:-200px;left:50%;transform:translateX(-50%);}
+  .final .wrap{position:relative;z-index:1;}
+  .final h2{color:var(--cream);font-size:clamp(32px,5vw,58px);max-width:18ch;margin:16px auto 24px;line-height:1.08;}
+  .final p{color:#cdd8df;max-width:48ch;margin:0 auto 38px;font-size:19px;}
+
+  /* ---------- footer ---------- */
+  footer{background:#0e2c3c;color:#9fb2bd;font-size:14px;padding:54px 0 40px;}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;}
+  footer a{color:#cdd8df;text-decoration:none;}
+  footer a:hover{color:var(--coral);}
+  .footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+  .disclaimer{margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:#7d9099;line-height:1.6;}
+
+  /* ---------- placeholder marker ---------- */
+  .ph{background:rgba(242,145,132,.16);border-bottom:1px dashed var(--coral-deep);padding:0 3px;border-radius:2px;}
+
+  @media(max-width:760px){
+    body{font-size:17px;}
+    section{padding:64px 0;}
+    .about-inner{grid-template-columns:1fr;gap:34px;}
+    .fw-grid{grid-template-columns:1fr;}
+    .nav-cta{display:none;}
+    .price-card{padding:40px 26px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <div class="logo">femin<span>vesta</span></div>
+    <a href="#anmelden" class="btn nav-cta">Platz sichern</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"><div class="blob blob1"></div><div class="blob blob2"></div></div>
+  <div class="wrap">
+    <p class="eyebrow fade in">Market Mastery · Technische Analyse</p>
+    <h1 class="fade in d1">Charts lesen. Mit <em>System</em> statt Bauchgefühl.</h1>
+    <p class="hero-sub fade in d2">Der Kurs, der dir technische Analyse Schritt für Schritt beibringt – ruhig, fundiert und ohne Hype. Damit du selbst entscheidest, wann du ein- und aussteigst.</p>
+    <div class="hero-actions fade in d3">
+      <a href="#anmelden" class="btn">Jetzt Platz sichern</a>
+      <a href="#kursinhalt" class="btn btn-ghost">Kursinhalt ansehen</a>
+    </div>
+    <div class="trust fade in d4">
+      <span>Über 300 Frauen begleitet</span><span class="dot"></span>
+      <span>100 % unabhängig</span><span class="dot"></span>
+      <span>Keine Provisionsprodukte</span>
+    </div>
+  </div>
+</header>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Kennst du das?</p>
+      <h2>Charts fühlen sich an wie eine Fremdsprache.</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card fade"><div class="q">„Wo soll ich überhaupt hinschauen?"</div><p>Linien, Kerzen, Indikatoren – auf dem Chart sieht alles nach Chaos aus, und niemand erklärt dir das System dahinter.</p></div>
+      <div class="pain-card fade d1"><div class="q">„Ich kaufe zu spät und verkaufe zu früh."</div><p>FOMO am Hoch, Panik am Tief. Ohne Plan triffst du Entscheidungen aus dem Gefühl heraus – meist im falschen Moment.</p></div>
+      <div class="pain-card fade d2"><div class="q">„Jeder sagt etwas anderes."</div><p>Finfluencer, Foren, Hot Tips. Du willst keine Tipps hinterherlaufen, sondern endlich selbst beurteilen können.</p></div>
+      <div class="pain-card fade d3"><div class="q">„Tutorials sind voller Fachchinesisch."</div><p>Stochastik, Fibonacci, Divergenzen – erklärt von Leuten, die dich offenbar abhängen wollen statt mitnehmen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise">
+  <div class="wrap">
+    <p class="eyebrow fade">Die gute Nachricht</p>
+    <h2 class="fade d1">Technische Analyse ist erlernbar – wenn man sie strukturiert erklärt bekommt.</h2>
+    <p class="fade d2">Market Mastery nimmt dir das Rätselraten ab. Du lernst eine klare Methodik, mit der du jeden Chart Schritt für Schritt einordnest. Kein Hype, keine Geheimformel – sondern ein nachvollziehbarer Prozess, den du danach selbstständig anwendest.</p>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section id="kursinhalt">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow fade">Der Kursinhalt</p>
+      <h2 class="fade d1">In 6 Modulen vom Chart-Chaos zur eigenen Strategie.</h2>
+      <p class="fade d2">Strukturiert aufgebaut – von den Grundlagen bis zur praktischen Umsetzung. Das sind die Themen, die du in Market Mastery lernst:</p>
+    </div>
+    <div class="modules">
+      <div class="module fade"><div class="num">⚜ THEMA</div><h3>Einführung in die Technische Analyse</h3><p>Was technische Analyse ist, was sie kann – und wie sie deine Entscheidungen fundiert macht.</p></div>
+      <div class="module fade d1"><div class="num">⚜ THEMA</div><h3>Dow-Theorie</h3><p>Das Fundament der Charttechnik: die Prinzipien, auf denen alles Weitere aufbaut.</p></div>
+      <div class="module fade d2"><div class="num">⚜ THEMA</div><h3>Charttypen &amp; Grundlagen</h3><p>Welcher Chart wofür? So wählst du die richtige Perspektive für deine Analyse.</p></div>
+      <div class="module fade"><div class="num">⚜ THEMA</div><h3>Candlestick-Formationen</h3><p>Die Sprache der Kerzen verstehen, ohne dich in hunderten Mustern zu verlieren.</p></div>
+      <div class="module fade d1"><div class="num">⚜ THEMA</div><h3>Marktpsychologie</h3><p>Warum sich Kurse bewegen, wie sie sich bewegen – und was Angst und Gier mit dem Chart machen.</p></div>
+      <div class="module fade d2"><div class="num">⚜ THEMA</div><h3>Chartmuster &amp; Formationen</h3><p>Die wiederkehrenden Muster erkennen, die dir Hinweise auf die nächste Bewegung geben.</p></div>
+      <div class="module fade"><div class="num">⚜ THEMA</div><h3>Indikatoren &amp; Oszillatoren</h3><p>Weniger ist mehr: die Werkzeuge, die wirklich helfen – sinnvoll eingesetzt statt überladen.</p></div>
+      <div class="module fade d1"><div class="num">⚜ THEMA</div><h3>Trendanalyse &amp; Marktstruktur</h3><p>Trends, Unterstützung und Widerstand lesen und wissen, was sie dir wirklich sagen.</p></div>
+      <div class="module fade d2"><div class="num">⚜ THEMA</div><h3>Risiko- &amp; Money-Management</h3><p>Wie viel riskierst du pro Trade? Der Teil, den die meisten überspringen – und der dich schützt.</p></div>
+      <div class="module fade"><div class="num">⚜ THEMA</div><h3>Praktische Umsetzung &amp; Tools</h3><p>Alles zusammenführen zu einem Vorgehen, das du dauerhaft und entspannt anwenden kannst.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="forwhom">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:40px;">
+      <p class="eyebrow fade">Passt das zu mir?</p>
+      <h2 class="fade d1">Für wen Market Mastery gemacht ist.</h2>
+    </div>
+    <div class="fw-grid">
+      <div class="fw-card fade"><h3>Ja, wenn du …</h3>
+        <ul class="fw-yes">
+          <li>endlich Charts verstehen willst, statt dich davor zu fürchten</li>
+          <li>schon investierst und deine Ein-/Ausstiege verbessern möchtest</li>
+          <li>lieber selbst entscheidest, als Tipps hinterherzulaufen</li>
+          <li>bereit bist, eine Methodik zu lernen und anzuwenden</li>
+          <li>Wert auf Struktur und Ruhe statt auf Hype legst</li>
+        </ul>
+      </div>
+      <div class="fw-card fade d1"><h3>Eher nicht, wenn du …</h3>
+        <ul class="fw-no">
+          <li>einen „Hot Tip" für den nächsten 100 %-Trade suchst</li>
+          <li>fertige Kaufsignale erwartest, die du blind kopierst</li>
+          <li>nicht bereit bist, regelmäßig zu üben</li>
+          <li>schnelles Geld ohne Eigenverantwortung willst</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="about-photo fade"><img src="kristin-chart.jpg" alt="Kristin von feminvesta erklärt einen Chart am Flipchart"><img class="cfte" src="cfte-badge.png" alt="CFTe – Certified Financial Technician"></div>
+      <div class="about-text">
+        <p class="eyebrow fade">Deine Mentorin</p>
+        <h2 class="fade d1">Hallo, ich bin Kristin.</h2>
+        <p class="fade d1">Ich habe feminvesta gegründet, weil ich überzeugt bin: Finanzielle Selbstbestimmung gehört in die Hände von Frauen – fundiert, unabhängig und ohne Verkaufsdruck.</p>
+        <p class="fade d2">Seit 2018 beschäftige ich mich intensiv mit den Märkten und habe inzwischen über 300 Frauen begleitet. Market Mastery ist die Essenz dessen, was ich über technische Analyse weiß – aufbereitet so, wie ich es mir damals selbst gewünscht hätte: verständlich und Schritt für Schritt.</p>
+        <p class="fade d2">feminvesta arbeitet bewusst unabhängig: keine Provisionsprodukte, keine Bank- oder Versicherungsbindung. Ich verdiene an deiner Bildung – nicht an Produkten, die ich dir andrehe.</p>
+        <div class="creds fade d3">
+          <span class="cred">Diplom-Betriebswirtin</span>
+          <span class="cred">§34f GewO</span>
+          <span class="cred">CFTe</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section class="included">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow fade">Das ist alles dabei</p>
+      <h2 class="fade d1">Mehr als nur Videos.</h2>
+    </div>
+    <div class="inc-grid">
+      <div class="inc-item fade"><div class="ic">▶</div><h3>6 Module mit Video-Lektionen</h3><p>Strukturierte Inhalte, die du in deinem Tempo durchgehst – jederzeit wiederholbar.</p></div>
+      <div class="inc-item fade d1"><div class="ic">✎</div><h3>Physisches Begleitbuch</h3><p>Dein Workbook wird dir nach Hause geschickt – zum Mitschreiben, Vertiefen und Nachlesen.</p></div>
+      <div class="inc-item fade d2"><div class="ic">◷</div><h3>Live-Calls alle 2 Wochen</h3><p>Gemeinsam Fragen klären und üben. Hier wird das Gelernte wirklich verständlich.</p></div>
+      <div class="inc-item fade d3"><div class="ic">♡</div><h3>Exklusive Discord-Community</h3><p>Austausch mit anderen Teilnehmerinnen und dem feminvesta-Team – auch nach dem Kurs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow fade">Stimmen aus der Community</p>
+      <h2 class="fade d1">Das sagen Teilnehmerinnen.</h2>
+      <p class="fade d2">Durchschnittlich 5,00 von 5 Sternen – hier ein paar echte Erfahrungsberichte.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi fade"><div class="stars">★★★★★</div><p>Der Rund-um-Service ist super – vom physischen Begleitbuch über die lehrreichen Kurs-Runden bis zu den Videos und dem Discord-Channel. Ich sehe bereits erste Erfolge in meinem Depot und verstehe Aktienkurse nun noch besser. Besonders loben möchte ich die geduldige Art, wie Kristin Fragen beantwortet … Vielen lieben Dank an Kristin und das Team!</p><div class="who">Michaela<small>Teilnehmerin Market Mastery · 03/2026</small></div></div>
+      <div class="testi fade d1"><div class="stars">★★★★★</div><p>Absolut empfehlenswert, wenn man noch mehr in die technische Analyse eintauchen möchte. Neben den sehr wertvollen Live-Calls gibt es praktische Übungen, sodass man sich direkt ausprobieren kann und es besser versteht. Dazu Feedback im aktiven Discord-Channel … Mal wieder eine top Arbeit von Kristin und ihrem Team :-)</p><div class="who">Linda<small>Teilnehmerin Market Mastery · 03/2026</small></div></div>
+      <div class="testi fade d2"><div class="stars">★★★★★</div><p>Mit der Market Mastery habe ich sehr viel mehr und intensiver die Analyse von Chartformationen und Indikatoren gelernt. Es macht tatsächlich Spaß, sich mit der Börse zu beschäftigen. Gerade die Praxis und der Austausch sind sehr wertvoll und bereiten darauf vor, das Wissen in die Praxis umzusetzen. Liebe Grüße B.</p><div class="who">Bärbel<small>Teilnehmerin Market Mastery · 02/2026</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="anmelden">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;margin:0 auto 44px;">
+      <p class="eyebrow fade">Dein Investment</p>
+      <h2 class="fade d1" style="margin-left:auto;margin-right:auto;">In dich und dein Können.</h2>
+    </div>
+    <div class="price-card fade d1">
+      <span class="badge">Market Mastery</span>
+      <div class="amount">2.999 €<small> inkl. MwSt</small></div>
+      <p class="sub">Ratenzahlung möglich · Nächster Start: <strong>15. Juni 2026</strong> mit Welcome Call</p>
+      <ul>
+        <li>6 Module technische Analyse mit Video-Lektionen</li>
+        <li>Physisches Begleitbuch nach Hause geliefert</li>
+        <li>Live-Calls alle 2 Wochen</li>
+        <li>Exklusive Discord-Community</li>
+        <li>14 Tage Geld-zurück-Garantie</li>
+      </ul>
+      <a href="https://myablefy.com/s/FEMINVESTA/market_mastery/payment" class="btn" style="width:100%;">Jetzt anmelden</a>
+      <p class="guarantee">Ohne Risiko: Wenn Market Mastery nichts für dich ist, bekommst du innerhalb von 14 Tagen dein Geld zurück.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;margin:0 auto 44px;">
+      <p class="eyebrow fade">Häufige Fragen</p>
+      <h2 class="fade d1" style="margin-left:auto;margin-right:auto;">Bevor du dich entscheidest.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="fade"><summary>Brauche ich Vorkenntnisse?</summary><p>Nein. Market Mastery startet bei den Grundlagen und baut systematisch auf. Auch wenn du schon investierst, profitierst du – du verlierst nichts und kannst einzelne Themen schneller durchgehen.</p></details>
+      <details class="fade"><summary>Wie läuft der Kurs ab?</summary><p>Du arbeitest dich in deinem Tempo durch die 6 Module mit Video-Lektionen und deinem physischen Begleitbuch. Begleitend gibt es alle zwei Wochen Live-Calls, in denen Fragen und Themen besprochen werden. Start ist der 15. Juni 2026 mit einem Welcome Call.</p></details>
+      <details class="fade"><summary>Bekomme ich konkrete Kauf­empfehlungen?</summary><p>Nein – ganz bewusst nicht. feminvesta ist ein Bildungsangebot. Du lernst die Methodik, mit der du selbst beurteilst. Das ist nachhaltiger als jede Empfehlung und entspricht meinem Anspruch an unabhängige Finanzbildung.</p></details>
+      <details class="fade"><summary>Gibt es eine Geld-zurück-Garantie?</summary><p>Ja. Du hast 14 Tage Zeit – wenn Market Mastery nichts für dich ist, bekommst du dein Geld zurück.</p></details>
+      <details class="fade"><summary>Ist das auch etwas für mich, wenn ich nur ETFs habe?</summary><p>Absolut. Auch wer langfristig in ETFs oder Einzelwerte investiert, profitiert davon, Ein- und Ausstiege besser einzuschätzen. Technische Analyse ergänzt deinen Werkzeugkasten.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="blob"></div>
+  <div class="wrap">
+    <p class="eyebrow fade" style="color:var(--coral);">Bereit?</p>
+    <h2 class="fade d1">Hör auf zu raten. Fang an zu verstehen.</h2>
+    <p class="fade d2">Sichere dir deinen Platz in Market Mastery und lerne, Charts mit System zu lesen – ruhig, fundiert und in deinem Tempo.</p>
+    <a href="#anmelden" class="btn fade d3">Jetzt Platz sichern</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="logo" style="color:#fff;margin-bottom:10px;">femin<span>vesta</span></div>
+      <div>© 2026 KG Consulting GmbH</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.feminvesta.de/impressum/">Impressum</a>
+      <a href="https://www.feminvesta.de/datenschutzerklaerung/">Datenschutz</a>
+      <a href="https://www.feminvesta.de/widerrufsrecht/">Widerrufsrecht</a>
+      <a href="https://www.feminvesta.de/agb/">AGB</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">feminvesta® ist eine eingetragene Marke. Die Inhalte von Market Mastery dienen ausschließlich der Information und Bildung und stellen keine Anlage-, Steuer- oder Rechtsberatung dar. Investitionen an den Finanzmärkten sind mit Risiken verbunden, bis hin zum Totalverlust. Jede Anlageentscheidung triffst du eigenverantwortlich.</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.12});
+  document.querySelectorAll('.fade:not(.in)').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
